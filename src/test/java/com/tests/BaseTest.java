@@ -22,14 +22,14 @@ public class BaseTest {
         String host = "localhost";
         DesiredCapabilities dc;
 
-        if(System.getProperty("BROWSER") != null &&
-                System.getProperty("BROWSER").equalsIgnoreCase("firefox")){
+        if (System.getProperty("BROWSER") != null &&
+                System.getProperty("BROWSER").equalsIgnoreCase("firefox")) {
             dc = DesiredCapabilities.firefox();
-        }else{
+        } else {
             dc = DesiredCapabilities.chrome();
         }
 
-        if(System.getProperty("HUB_HOST") != null){
+        if (System.getProperty("HUB_HOST") != null) {
             host = System.getProperty("HUB_HOST");
         }
 
@@ -41,10 +41,22 @@ public class BaseTest {
     }
 
     @AfterTest
-    public void quitDriver(){
+    public void quitDriver() {
         this.driver.quit();
     }
 
+    /*Have the same problem as mbround18 when trying to connect to the selenoid server using ruby/capybara and java/selenide.
+     cannot start process [/root/.aerokube/selenoid/chromedriver --whitelisted-ips='' --verbose --port=41316]: fork/exec /root/.aerokube/selenoid/chromedriver: no such file or directory
+     Can anybody help me please?
+
+RESOLVED
+    * I had the same problem on Ubuntu 18.04 using docker .aerokube/selenoid/chromedriver: no such file or directory.
+      I was able to fix it with ./cm selenoid update which install the latest 2 versions of chrome, firefox... drivers and change browsers.json from "default": "latest" to "default": "72.0".
+      Just leave this here if someone have the same issue.
+    *
+    *
+    *
+    * */
 
 
 }
