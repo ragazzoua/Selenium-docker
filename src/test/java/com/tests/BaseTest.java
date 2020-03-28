@@ -35,7 +35,7 @@ public class BaseTest {
 
         String testName = ctx.getCurrentXmlTest().getName();
 
-        String completeUrl = "http://" + host + ":4444/wd/hub";
+        String completeUrl = "http://127.0.0.1:4444/wd/hub";
         dc.setCapability("name", testName);
         this.driver = new RemoteWebDriver(new URL(completeUrl), dc);
     }
