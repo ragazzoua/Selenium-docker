@@ -3,7 +3,7 @@ FROM openjdk:8u191-jre-alpine3.8
 RUN apk add curl jq
 
 # Workspace
-WORKDIR /usr/share/udemy
+WORKDIR /usr/share/udemy/
 
 # ADD .jar under target from host
 # into this image
@@ -19,7 +19,7 @@ ADD book-flight-module.xml				book-flight-module.xml
 ADD search-module.xml					search-module.xml
 
 # ADD health check script
-ADD healthcheck.sh                      healthcheck.sh
+RUN wget https://s3.amazonaws.com/selenium-docker/healthcheck/healthcheck.sh
 
 # BROWSER
 # HUB_HOST
