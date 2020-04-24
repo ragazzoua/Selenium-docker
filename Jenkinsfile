@@ -8,7 +8,7 @@
             }
             stage('Build Image') {
                 steps {
-                    bat "docker build -t 'selenium-docker' ."
+                    bat "docker build 'selenium-docker' ."
                 }
             }
             stage('Push Image') {
